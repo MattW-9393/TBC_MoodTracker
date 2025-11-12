@@ -2,9 +2,6 @@ import datetime
 import sqlite3
 import csv
 
-
-
-
 # Set up Mood-Journal DB
 con = sqlite3.connect("proto-mood.db")
 cur = con.cursor()
