@@ -1,6 +1,14 @@
 import datetime
 import sqlite3
 import csv
+from flask import Flask
+
+app = Flask(__name__)
+
+# Flask Server
+@app.route("/")
+def display_data():
+    return "<p>Hello, World!</p>"
 
 # Set up Mood-Journal DB
 con = sqlite3.connect("proto-mood.db")
