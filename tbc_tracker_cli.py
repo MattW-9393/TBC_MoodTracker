@@ -50,8 +50,13 @@ def daily_mood_check():
             print("Moderate score given - No commentary required")
 
         else:
-            commentary = input("Please add some commentary explaining your answer (250 char max): ")
 
+            while True:
+                    commentary = input("Please add some commentary explaining your answer (250 char max): ")
+                    if len(commentary) <= 250:
+                        break
+                    else:
+                        print("Your commentary is too long. Commentary must be no more than 250 characters.")
         # Define data that will be added to the table
         data = [the_date, todays_mood, commentary]
 
