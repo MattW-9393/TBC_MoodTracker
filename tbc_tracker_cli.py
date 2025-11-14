@@ -17,7 +17,7 @@ def daily_mood_check():
     the_date = xdate.strftime("%d-%m-%Y")
     with sqlite3.connect("proto-mood.db") as con:
         cur = con.cursor()
-        cur.execute("CREATE TABLE IF NOT EXISTS MoodRatings (date, mood_label, commentary)")
+        cur.execute("CREATE TABLE IF NOT EXISTS MoodRatings (date, moodlabel, commentary)")
         todays_mood = ""
         print(f"""Hi {name}, welcome to your mood checker.
               I'd like to ask you a couple of questions about your mood if that's okay?""")
@@ -61,7 +61,7 @@ def daily_mood_check():
         data = [the_date, todays_mood, commentary]
 
         # Insert the latest entries into the DB
-        cur.execute("INSERT INTO MoodRatings (date, mood_label, commentary) VALUES (?, ?, ?)", data)
+        cur.execute("INSERT INTO MoodRatings (date, moodlabel, commentary) VALUES (?, ?, ?)", data)
         con.commit()
 
         # Closing notes on the script
@@ -100,7 +100,7 @@ def daily_mood_check():
                 print("Exporting data into CSV............")
                 with open("table.csv", "w", newline="", encoding="utf-8") as f:
                     writer = csv.writer(f)
-                    writer.writerow(["date", "mood_label", "commentary"])
+                    writer.writerow(["date", "moodlabel", "commentary"])
                     writer.writerows(allrows)
                 print("File successfully exported!!")
 
